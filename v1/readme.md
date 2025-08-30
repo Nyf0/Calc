@@ -1,0 +1,1 @@
+Just a basic terminal calculator. It only takes two integer inputs (n1 and n2), and an op (operator). Only performs 4 basic operations.
