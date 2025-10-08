@@ -1,39 +1,72 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tauri App</title>
-    <script type="module" src="/main.js" defer></script>
+    <title>Simple Calculator</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #f5f5f5;
+      }
+      .calculator {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      input {
+        width: 100%;
+        font-size: 1.5rem;
+        text-align: right;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        background: #eee;
+        border-radius: 5px;
+      }
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 60px);
+        gap: 10px;
+      }
+      button {
+        font-size: 1.2rem;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background: #3498db;
+        color: white;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      button:hover {
+        background: #2980b9;
+      }
+      .operator {
+        background: #f39c12;
+      }
+      .operator:hover {
+        background: #e67e22;
+      }
+    </style>
   </head>
-
   <body>
-    <main class="container">
-      <h1>Welcome to Tauri</h1>
-
-      <div class="row">
-        <a href="https://tauri.app" target="_blank">
-          <img src="/assets/tauri.svg" class="logo tauri" alt="Tauri logo" />
-        </a>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-          target="_blank"
-        >
-          <img
-            src="/assets/javascript.svg"
-            class="logo vanilla"
-            alt="JavaScript logo"
-          />
-        </a>
+    <div class="calculator">
+      <input type="text" id="display" readonly />
+      <div class="buttons">
+        <button>7</button><button>8</button><button>9</button><button class="operator">/</button>
+        <button>4</button><button>5</button><button>6</button><button class="operator">*</button>
+        <button>1</button><button>2</button><button>3</button><button class="operator">-</button>
+        <button>0</button><button>.</button><button>=</button><button class="operator">+</button>
+        <button id="clear" style="grid-column: span 4; background:#e74c3c;">C</button>
       </div>
-      <p>Click on the Tauri logo to learn more about the framework</p>
+    </div>
 
-      <form class="row" id="greet-form">
-        <input id="greet-input" placeholder="Enter a name..." />
-        <button type="submit">Greet</button>
-      </form>
-      <p id="greet-msg"></p>
-    </main>
+    <script src="main.js"></script>
   </body>
 </html>
