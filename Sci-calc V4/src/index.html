@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator">
+            <div class="header">
+                <h1>Scientific Calculator</h1>
+                <button id="themeToggle" class="theme-toggle" aria-label="Switch theme">
+                    <span id="themeIcon">🌙</span>
+                    <span id="themeText">Dark</span>
+                </button>
+            </div>
+
+            <div id="history" class="history" style="display: none;"></div>
+
+            <div class="display">
+                <div id="expression" class="expression">0</div>
+                <div id="result" class="result">0</div>
+            </div>
+
+            <div class="keypad">
+                <!-- Row 1: Functions -->
+                <button class="btn function" data-value="sin(">sin</button>
+                <button class="btn function" data-value="cos(">cos</button>
+                <button class="btn function" data-value="tan(">tan</button>
+                <button class="btn function" data-value="log(">log</button>
+                <button class="btn function" data-value="sqrt(">√</button>
+
+                <!-- Row 2 -->
+                <button class="btn number" data-value="7">7</button>
+                <button class="btn number" data-value="8">8</button>
+                <button class="btn number" data-value="9">9</button>
+                <button class="btn operator" data-value="/">÷</button>
+                <button class="btn clear" data-value="DEL">DEL</button>
+
+                <!-- Row 3 -->
+                <button class="btn number" data-value="4">4</button>
+                <button class="btn number" data-value="5">5</button>
+                <button class="btn number" data-value="6">6</button>
+                <button class="btn operator" data-value="*">×</button>
+                <button class="btn operator" data-value="(">(</button>
+
+                <!-- Row 4 -->
+                <button class="btn number" data-value="1">1</button>
+                <button class="btn number" data-value="2">2</button>
+                <button class="btn number" data-value="3">3</button>
+                <button class="btn operator" data-value="-">-</button>
+                <button class="btn operator" data-value=")">)</button>
+
+                <!-- Row 5 -->
+                <button class="btn number" data-value="0">0</button>
+                <button class="btn number" data-value=".">.</button>
+                <button class="btn clear" data-value="AC" style="grid-column: span 2;">AC</button>
+                <button class="btn operator" data-value="+">+</button>
+
+                <!-- Row 6: Equals -->
+                <button class="btn equals" data-value="=" style="grid-column: span 5;">=</button>
+            </div>
+
+            <div class="footer">
+                Powered by Tauri
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

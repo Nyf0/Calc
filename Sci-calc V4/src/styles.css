@@ -1,0 +1,303 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-gradient-from: #e3f2fd;
+    --bg-gradient-to: #f3e5f5;
+    --calculator-bg: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666;
+    --display-bg: #f5f5f5;
+    --display-text: #2e7d32;
+    --btn-number-bg: #f0f0f0;
+    --btn-number-hover: #e0e0e0;
+    --btn-operator-bg: #2196f3;
+    --btn-operator-hover: #1976d2;
+    --btn-function-bg: #9c27b0;
+    --btn-function-hover: #7b1fa2;
+    --btn-clear-bg: #f44336;
+    --btn-clear-hover: #d32f2f;
+    --btn-equals-bg: #4caf50;
+    --btn-equals-hover: #388e3c;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-gradient-from: #1a1a2e;
+    --bg-gradient-to: #16213e;
+    --calculator-bg: #2d3748;
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+    --display-bg: #1a202c;
+    --display-text: #68d391;
+    --btn-number-bg: #4a5568;
+    --btn-number-hover: #718096;
+    --btn-operator-bg: #3182ce;
+    --btn-operator-hover: #2c5aa0;
+    --btn-function-bg: #805ad5;
+    --btn-function-hover: #6b46c1;
+    --btn-clear-bg: #e53e3e;
+    --btn-clear-hover: #c53030;
+    --btn-equals-bg: #38a169;
+    --btn-equals-hover: #2f855a;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--bg-gradient-from), var(--bg-gradient-to));
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.calculator-container {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator {
+    background: var(--calculator-bg);
+    border-radius: 20px;
+    padding: clamp(16px, 3vw, 24px);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: clamp(16px, 2vw, 24px);
+    flex-shrink: 0;
+}
+
+h1 {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.theme-toggle {
+    background: var(--btn-number-bg);
+    border: none;
+    padding: clamp(6px, 1.5vw, 8px) clamp(8px, 2vw, 12px);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--btn-number-hover);
+    transform: scale(1.05);
+}
+
+.history {
+    background: var(--display-bg);
+    border-radius: 10px;
+    padding: clamp(8px, 1.5vw, 12px);
+    margin-bottom: clamp(12px, 2vw, 16px);
+    max-height: 80px;
+    overflow-y: auto;
+    font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+    color: var(--text-secondary);
+    flex-shrink: 0;
+}
+
+.history-item {
+    cursor: pointer;
+    padding: 2px 0;
+    transition: color 0.2s ease;
+}
+
+.history-item:hover {
+    color: var(--text-primary);
+}
+
+.display {
+    background: var(--display-bg);
+    border-radius: 12px;
+    padding: clamp(12px, 2vw, 16px);
+    margin-bottom: clamp(16px, 3vw, 20px);
+    text-align: right;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+.expression {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+    min-height: 18px;
+    word-break: break-all;
+}
+
+.result {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    font-weight: 600;
+    color: var(--display-text);
+    word-break: break-all;
+    font-family: 'Courier New', monospace;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(8px, 1.5vw, 10px);
+    margin-bottom: clamp(12px, 2vw, 16px);
+    flex: 1;
+    min-height: 0;
+}
+
+.btn {
+    border: none;
+    border-radius: 12px;
+    padding: clamp(12px, 2vw, 16px) clamp(6px, 1vw, 8px);
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn.number {
+    background: var(--btn-number-bg);
+    color: var(--text-primary);
+}
+
+.btn.number:hover {
+    background: var(--btn-number-hover);
+}
+
+.btn.operator {
+    background: var(--btn-operator-bg);
+}
+
+.btn.operator:hover {
+    background: var(--btn-operator-hover);
+}
+
+.btn.function {
+    background: var(--btn-function-bg);
+}
+
+.btn.function:hover {
+    background: var(--btn-function-hover);
+}
+
+.btn.clear {
+    background: var(--btn-clear-bg);
+}
+
+.btn.clear:hover {
+    background: var(--btn-clear-hover);
+}
+
+.btn.equals {
+    background: var(--btn-equals-bg);
+}
+
+.btn.equals:hover {
+    background: var(--btn-equals-hover);
+}
+
+.footer {
+    text-align: center;
+    font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+    color: var(--text-secondary);
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+/* Scrollbar styling */
+.history::-webkit-scrollbar {
+    width: 4px;
+}
+
+.history::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.history::-webkit-scrollbar-thumb {
+    background: var(--text-secondary);
+    border-radius: 2px;
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-height: 600px) {
+    .calculator-container {
+        padding: 10px;
+    }
+    
+    .calculator {
+        padding: 12px;
+    }
+    
+    .keypad {
+        gap: 6px;
+    }
+    
+    .btn {
+        padding: 8px 4px;
+        min-height: 36px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Ensure buttons are accessible on touch devices */
+@media (hover: none) {
+    .btn:hover {
+        transform: none;
+    }
+    
+    .btn:active {
+        transform: scale(0.95);
+    }
+}
+
+/* Key press aninmations */
+.key-press {
+    transform: scale(0.95) !important;
+    opacity: 0.8 !important;
+    transition: all 0.1s ease !important;
+}
+
+.btn {
+    transition: all 0.2s ease, transform 0.1s ease !important;
+}
