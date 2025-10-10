@@ -1,72 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simple Calculator</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background: #f5f5f5;
-      }
-      .calculator {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-      input {
-        width: 100%;
-        font-size: 1.5rem;
-        text-align: right;
-        padding: 10px;
-        margin-bottom: 10px;
-        border: none;
-        background: #eee;
-        border-radius: 5px;
-      }
-      .buttons {
-        display: grid;
-        grid-template-columns: repeat(4, 60px);
-        gap: 10px;
-      }
-      button {
-        font-size: 1.2rem;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        background: #3498db;
-        color: white;
-        cursor: pointer;
-        transition: background 0.2s;
-      }
-      button:hover {
-        background: #2980b9;
-      }
-      .operator {
-        background: #f39c12;
-      }
-      .operator:hover {
-        background: #e67e22;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="calculator">
-      <input type="text" id="display" readonly />
-      <div class="buttons">
-        <button>7</button><button>8</button><button>9</button><button class="operator">/</button>
-        <button>4</button><button>5</button><button>6</button><button class="operator">*</button>
-        <button>1</button><button>2</button><button>3</button><button class="operator">-</button>
-        <button>0</button><button>.</button><button>=</button><button class="operator">+</button>
-        <button id="clear" style="grid-column: span 4; background:#e74c3c;">C</button>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator">
+            <div class="header">
+                <h1>Scientific Calculator</h1>
+                <button id="themeToggle" class="theme-toggle" aria-label="Switch theme">
+                    <span id="themeIcon">🌙</span>
+                    <span id="themeText">Dark</span>
+                </button>
+            </div>
+
+            <div id="history" class="history" style="display: none;"></div>
+
+            <div class="display">
+                <div id="expression" class="expression">0</div>
+                <div id="result" class="result">0</div>
+            </div>
+
+            <div class="keypad">
+                <!-- Row 1: Functions -->
+                <button class="btn function" data-value="sin(">sin</button>
+                <button class="btn function" data-value="cos(">cos</button>
+                <button class="btn function" data-value="tan(">tan</button>
+                <button class="btn function" data-value="log(">log</button>
+                <button class="btn function" data-value="sqrt(">√</button>
+
+                <!-- Row 2 -->
+                <button class="btn number" data-value="7">7</button>
+                <button class="btn number" data-value="8">8</button>
+                <button class="btn number" data-value="9">9</button>
+                <button class="btn operator" data-value="/">÷</button>
+                <button class="btn clear" data-value="DEL">DEL</button>
+
+                <!-- Row 3 -->
+                <button class="btn number" data-value="4">4</button>
+                <button class="btn number" data-value="5">5</button>
+                <button class="btn number" data-value="6">6</button>
+                <button class="btn operator" data-value="*">×</button>
+                <button class="btn operator" data-value="(">(</button>
+
+                <!-- Row 4 -->
+                <button class="btn number" data-value="1">1</button>
+                <button class="btn number" data-value="2">2</button>
+                <button class="btn number" data-value="3">3</button>
+                <button class="btn operator" data-value="-">-</button>
+                <button class="btn operator" data-value=")">)</button>
+
+                <!-- Row 5 -->
+                <button class="btn number" data-value="0">0</button>
+                <button class="btn number" data-value=".">.</button>
+                <button class="btn clear" data-value="AC" style="grid-column: span 2;">AC</button>
+                <button class="btn operator" data-value="+">+</button>
+
+                <!-- Row 6: Equals -->
+                <button class="btn equals" data-value="=" style="grid-column: span 5;">=</button>
+            </div>
+
+            <div class="footer">
+                Powered by Tauri
+            </div>
+        </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
     <script src="main.js"></script>
-  </body>
+</body>
 </html>
