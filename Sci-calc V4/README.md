@@ -1,4 +1,8 @@
-# Tauri + Vanilla
+# Sci-calc V4
+
+A scientific calculator I made using tauri. You can find the executables in the releases folder.
+
+## Tauri + Vanilla
 
 This template should help get you started developing with Tauri in vanilla HTML, CSS and Javascript.
 
