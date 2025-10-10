@@ -290,3 +290,14 @@ h1 {
         transform: scale(0.95);
     }
 }
+
+/* Key press aninmations */
+.key-press {
+    transform: scale(0.95) !important;
+    opacity: 0.8 !important;
+    transition: all 0.1s ease !important;
+}
+
+.btn {
+    transition: all 0.2s ease, transform 0.1s ease !important;
+}
